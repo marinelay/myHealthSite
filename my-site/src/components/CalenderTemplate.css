@@ -1,0 +1,20 @@
+.calender-template{
+    background : white;
+    width : 512px;
+    margin: 0 auto;
+}
+
+.title {
+    padding : 2rem;
+    font-size: 2.5rem;
+    text-align : center;
+    font-weight : 100;
+}
+
+.month {
+
+}
+
+.day {
+
+}
