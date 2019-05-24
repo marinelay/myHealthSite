@@ -1,4 +1,4 @@
-.calender-template{
+.calendar-template{
     background : white;
     width : 512px;
     margin: 0 auto;
@@ -11,10 +11,14 @@
     font-weight : 100;
 }
 
-.month {
-
+.month-wrapper {
+    background: white;
 }
 
-.day {
+.week-wrapper {  
+    background: white; 
+}
 
+.day-wrapper {
+    background: gray;
 }

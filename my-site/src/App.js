@@ -3,8 +3,45 @@ import TodoListTemplate from './components/TodoListTemplate';
 import Form from './components/Form';
 import TodoItemList from './components/TodoItemList';
 
-class App extends Component {
+import CalendarTemplate from './components/CalendarTemplate';
+import Month from './components/Month';
+import Week from './components/Week';
+import Day from './components/Day';
+import DayList from './components/DayList';
+import dateFns from 'date-fns';
 
+
+class App extends Component {
+  state = {
+    curMonth: Date()
+  }
+
+  nextMonth = () => {
+    this.setState({
+      curMonth: dateFns.addMonths(this.state.curMonth, 1)
+    });
+  };
+
+  prevMonth = () => {
+    this.setState({
+      curMonth: dateFns.subMonths(this.state.curMonth, 1)
+    });
+  };
+
+  render() {
+    const {curMonth} = this.state;
+
+    const {
+      nextMonth, prevMonth} = this;
+
+    return (
+      <CalendarTemplate month={(<Month nextPress={nextMonth} 
+        prevPress ={prevMonth}/>)} 
+        week={(<Week/>)} day={(<DayList curMonth={curMonth}/>)}></CalendarTemplate>
+    );
+  };
+ 
+/*
   id = 3
 
   state = {
@@ -90,6 +127,7 @@ class App extends Component {
         </TodoListTemplate>
     );
   }
+  */
 }
 
 export default App;

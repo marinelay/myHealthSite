@@ -1,0 +1,29 @@
+.week {
+    display:flex;
+    justify-content: space-around;
+    
+
+    margin-bottom:0.5rem;
+}
+
+.sunday {
+    flex:1;
+    text-align: center;
+    border: 1px solid black;
+    border-right: 0px;
+    color: #DF0101;
+}
+
+.other {
+    flex:1;
+    text-align: center;
+    border: 1px solid black;
+    border-right: 0px;
+}
+
+.saturday {
+    flex:1;
+    text-align: center;
+    border: 1px solid black;
+    color:#819FF7;
+}
