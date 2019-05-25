@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
-import TodoListTemplate from './components/TodoListTemplate';
-import Form from './components/Form';
-import TodoItemList from './components/TodoItemList';
 
 import CalendarTemplate from './components/calendar/CalendarTemplate';
 import Month from './components/calendar/Month';
 import Week from './components/calendar/Week';
 import DayList from './components/calendar/DayList';
+
+import ExerciseTemplate from './components/exercise/ExerciseTemplate';
+
 import dateFns from 'date-fns';
 
 
 class App extends Component {
   state = {
-    curMonth: Date()
+    curMonth: Date(),
+    success: 0,
+    fail: 0
   }
 
   nextMonth = () => {
@@ -27,16 +29,34 @@ class App extends Component {
     });
   };
 
+  dayPress = () => {
+    const { success } = this.state;
+
+    this.setState({
+      success: success+1
+    })
+  }
+
   render() {
-    const {curMonth} = this.state;
+    const {curMonth, success, fail} = this.state;
 
     const {
-      nextMonth, prevMonth} = this;
+      nextMonth, prevMonth, dayPress} = this;
 
     return (
-      <CalendarTemplate month={(<Month nextPress={nextMonth} 
+      <div className = 'test'>
+        <div className ='calexe'>
+        <CalendarTemplate month={(<Month nextPress={nextMonth} 
         prevPress ={prevMonth} curMonth={curMonth}/>)} 
-        week={(<Week/>)} day={(<DayList curMonth={curMonth}/>)}></CalendarTemplate>
+        week={(<Week/>)} day={(<DayList curMonth={curMonth} dayPress={dayPress}/>)}>
+        </CalendarTemplate>
+
+        <ExerciseTemplate success = {success}></ExerciseTemplate>
+        </div>
+        <div>
+        
+        </div>
+      </div>
     );
   };
  

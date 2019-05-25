@@ -31,3 +31,11 @@
     transform: rotate(360deg);
   }
 }
+
+.test {
+  display: flex;
+}
+
+.calexe {
+  justify-content: center;
+}

@@ -4,7 +4,7 @@ import './DayList.css'
 
 class DayList extends Component {
     render() {
-        const {curMonth} = this.props;
+        const {curMonth, dayPress} = this.props;
 
         const monthStart = dateFns.startOfMonth(curMonth);
         const monthEnd = dateFns.endOfMonth(monthStart);
@@ -24,7 +24,7 @@ class DayList extends Component {
                 const cloneDay = day;
                 days.push(
                     <div className={`${!dateFns.isSameMonth(day, monthStart) ? "disabled" : ""}`}>
-                    <span>{formattedDate} </span>
+                    <span className ='cells' onClick={dayPress}>{formattedDate}</span>
                     </div>
                 );
 
@@ -32,14 +32,14 @@ class DayList extends Component {
             }
 
             rows.push(
-                <div className='week'>{days}</div>
+                <div className='week-rows'>{days}</div>
             );
 
             days = [];
         }
 
         return (
-            <div>{rows}</div>
+            <div className='day-body'>{rows}</div>
         );
     }
 }

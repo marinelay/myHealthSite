@@ -1,7 +1,25 @@
 .disabled {
-    color:grey;
+    color:lightgrey;
 }
 
-.week {
-    text-align:center;
+.week-rows {
+    display: flex;
 }
+
+.cells {
+    display: inline-block;
+
+    text-align: center;
+    width:75px;
+    padding-top:1rem;
+    padding-bottom:1rem;
+
+    cursor: pointer;
+    transition: 0.25s ease-out;
+}
+
+.cells:hover {
+    background: skyblue;
+    transition: 0.5s ease-out;
+}
+  

@@ -1,6 +1,6 @@
 .calendar-template{
-    background : white;
-    width : 512px;
+    background : skyblue;
+    width : 525px;
     margin: 0 auto;
 }
 
@@ -20,5 +20,6 @@
 }
 
 .day-wrapper {
+    display:1;
     background: white;
 }

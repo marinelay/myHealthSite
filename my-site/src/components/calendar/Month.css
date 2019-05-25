@@ -18,6 +18,12 @@
     background: #22b8cf;
     border-radius: 3px;
     color:white;
+
+    cursor:pointer;
+}
+
+.prev-button:hover {
+    background: #3bc9db;
 }
 
 .month-text {
@@ -42,4 +48,10 @@
     background: #22b8cf;
     border-radius: 3px;
     color:white;
+
+    cursor:pointer;
+}
+
+.next-button:hover {
+    background: #3bc9db;
 }
