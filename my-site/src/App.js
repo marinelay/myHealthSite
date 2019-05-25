@@ -3,11 +3,10 @@ import TodoListTemplate from './components/TodoListTemplate';
 import Form from './components/Form';
 import TodoItemList from './components/TodoItemList';
 
-import CalendarTemplate from './components/CalendarTemplate';
-import Month from './components/Month';
-import Week from './components/Week';
-import Day from './components/Day';
-import DayList from './components/DayList';
+import CalendarTemplate from './components/calendar/CalendarTemplate';
+import Month from './components/calendar/Month';
+import Week from './components/calendar/Week';
+import DayList from './components/calendar/DayList';
 import dateFns from 'date-fns';
 
 
@@ -36,7 +35,7 @@ class App extends Component {
 
     return (
       <CalendarTemplate month={(<Month nextPress={nextMonth} 
-        prevPress ={prevMonth}/>)} 
+        prevPress ={prevMonth} curMonth={curMonth}/>)} 
         week={(<Week/>)} day={(<DayList curMonth={curMonth}/>)}></CalendarTemplate>
     );
   };

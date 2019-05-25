@@ -23,15 +23,19 @@ class DayList extends Component {
                 formattedDate = dateFns.format(day, dateFormat);
                 const cloneDay = day;
                 days.push(
-                    <div classNama='date'>{formattedDate}</div>
+                    <div className={`${!dateFns.isSameMonth(day, monthStart) ? "disabled" : ""}`}>
+                    <span>{formattedDate} </span>
+                    </div>
                 );
 
                 day = dateFns.addDays(day, 1);
             }
 
             rows.push(
-                <div>{days}</div>
+                <div className='week'>{days}</div>
             );
+
+            days = [];
         }
 
         return (
