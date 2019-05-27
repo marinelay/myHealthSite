@@ -6,6 +6,7 @@
     display: flex;
 }
 
+
 .cells {
     display: inline-block;
 
@@ -30,4 +31,5 @@
 .fail {
     background: red;
 }
+
   

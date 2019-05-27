@@ -36,8 +36,6 @@ class App extends Component {
 
     
     const index = dayInfo.findIndex(info => isSameDay(info.day, day));
-    console.log(index);
-    console.log(day);
 
     if(index === -1) { // first time
       this.setState({
@@ -74,7 +72,7 @@ class App extends Component {
       <div className = 'test'>
         <CalendarTemplate month={(<Month nextPress={nextMonth} 
         prevPress ={prevMonth} curMonth={curMonth}/>)} 
-        week={(<Week/>)} day={(<DayList curMonth={curMonth} dayPress={dayPress}/>)}>
+        week={(<Week/>)} day={(<DayList curMonth={curMonth} dayInfo={dayInfo} dayPress={dayPress}/>)}>
         </CalendarTemplate>
 
         <ExerciseTemplate dayInfo = {dayInfo}></ExerciseTemplate>

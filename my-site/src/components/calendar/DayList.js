@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import dateFns from 'date-fns';
+import dateFns, { isSameDay } from 'date-fns';
 import './DayList.css';
 import Day from './Day';
 
 class DayList extends Component {
     render() {
-        const {curMonth, dayPress} = this.props;
+        const {curMonth, dayInfo, dayPress} = this.props;
 
         const monthStart = dateFns.startOfMonth(curMonth);
         const monthEnd = dateFns.endOfMonth(monthStart);
@@ -23,9 +23,20 @@ class DayList extends Component {
             for(let i = 0; i<7; i++) {
                 formattedDate = dateFns.format(day, dateFormat);
                 const cloneDay = day;
+
+                const index = dayInfo.findIndex(info => isSameDay(cloneDay, info.day));
+                let selected;
+                let flag;
+                if(index === -1) {
+                    flag = 0;
+                } else {
+                    selected = dayInfo[index];
+                    flag = selected.flag;
+                }
+
                 days.push(
                     <div className={`${!dateFns.isSameMonth(day, monthStart) ? "disabled" : ""}`}>
-                        <span className = 'cells' onClick={() => dayPress(cloneDay)}>{formattedDate}</span>
+                        <span className = {`cells ${flag===0 ? '' : (flag===1 ? 'success' : 'fail')}`} onClick={() => dayPress(cloneDay)}>{formattedDate}</span>
                     </div>
                 );
 
