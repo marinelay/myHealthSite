@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import dateFns from 'date-fns';
-import './DayList.css'
+import './DayList.css';
+import Day from './Day';
 
 class DayList extends Component {
     render() {
@@ -24,7 +25,7 @@ class DayList extends Component {
                 const cloneDay = day;
                 days.push(
                     <div className={`${!dateFns.isSameMonth(day, monthStart) ? "disabled" : ""}`}>
-                    <span className ='cells' onClick={dayPress}>{formattedDate}</span>
+                        <span className = 'cells' onClick={() => dayPress(cloneDay)}>{formattedDate}</span>
                     </div>
                 );
 

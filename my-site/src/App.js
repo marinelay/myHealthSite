@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.css';
 
 import CalendarTemplate from './components/calendar/CalendarTemplate';
 import Month from './components/calendar/Month';
@@ -7,14 +8,15 @@ import DayList from './components/calendar/DayList';
 
 import ExerciseTemplate from './components/exercise/ExerciseTemplate';
 
-import dateFns from 'date-fns';
+import dateFns, { isSameDay } from 'date-fns';
 
 
 class App extends Component {
   state = {
     curMonth: Date(),
-    success: 0,
-    fail: 0
+    dayInfo: [
+
+    ]
   }
 
   nextMonth = () => {
@@ -29,29 +31,54 @@ class App extends Component {
     });
   };
 
-  dayPress = () => {
-    const { success } = this.state;
+  dayPress = (day) => {
+    const { dayInfo } = this.state;
 
-    this.setState({
-      success: success+1
-    })
+    
+    const index = dayInfo.findIndex(info => isSameDay(info.day, day));
+    console.log(index);
+    console.log(day);
+
+    if(index === -1) { // first time
+      this.setState({
+        dayInfo: dayInfo.concat({
+          day: day,
+          flag: 1
+        })
+      })
+    }
+
+    else { // second time
+      const selected = dayInfo[index];
+
+      const nextInfo = [...dayInfo];
+
+      nextInfo[index] = {
+        ...selected,
+        flag: (selected.flag + 1) % 3
+      }
+
+      this.setState({
+        dayInfo: nextInfo
+      })
+    }
   }
 
   render() {
-    const {curMonth, success, fail} = this.state;
+    const {curMonth, dayInfo} = this.state;
 
     const {
       nextMonth, prevMonth, dayPress} = this;
 
     return (
-      <React.Fragment className = 'test'>
+      <div className = 'test'>
         <CalendarTemplate month={(<Month nextPress={nextMonth} 
         prevPress ={prevMonth} curMonth={curMonth}/>)} 
         week={(<Week/>)} day={(<DayList curMonth={curMonth} dayPress={dayPress}/>)}>
         </CalendarTemplate>
 
-        <ExerciseTemplate success = {success}></ExerciseTemplate>
-      </React.Fragment>
+        <ExerciseTemplate dayInfo = {dayInfo}></ExerciseTemplate>
+      </div>
     );
   };
  
