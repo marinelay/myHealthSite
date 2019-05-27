@@ -44,19 +44,14 @@ class App extends Component {
       nextMonth, prevMonth, dayPress} = this;
 
     return (
-      <div className = 'test'>
-        <div className ='calexe'>
+      <React.Fragment className = 'test'>
         <CalendarTemplate month={(<Month nextPress={nextMonth} 
         prevPress ={prevMonth} curMonth={curMonth}/>)} 
         week={(<Week/>)} day={(<DayList curMonth={curMonth} dayPress={dayPress}/>)}>
         </CalendarTemplate>
 
         <ExerciseTemplate success = {success}></ExerciseTemplate>
-        </div>
-        <div>
-        
-        </div>
-      </div>
+      </React.Fragment>
     );
   };
  
